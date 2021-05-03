@@ -10,7 +10,10 @@ elif platform.system() == "Darwin":
 
 
 def treat(page_source):
-    return BeautifulSoup(page_source, "html.parser").find("title").text.replace(" - Wikipedia", "")
+    try:
+        return BeautifulSoup(page_source, "html.parser").find("title").text.replace(" - Wikipedia", "")
+    except AttributeError:
+        return "error"
 
 
 def start(start_point="https://en.wikipedia.org/wiki/Special:Random",
@@ -28,7 +31,7 @@ def start(start_point="https://en.wikipedia.org/wiki/Special:Random",
     time.sleep(5)
     dr.get(start_point)
     current_page = treat(dr.page_source)
-    history = [current_page]
+    history = []
     while treat(dr.page_source) != end_page:
         if treat(dr.page_source) != current_page:
             history.append(current_page)
