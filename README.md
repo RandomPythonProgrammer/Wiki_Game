@@ -7,3 +7,4 @@ Simple wiki game:
 - once you reach the end point the program will give you a score and show you your path
 - you may go to stop.com to stop and restart.com to restart
 - I realize you can cheat very easily but I am too lazy to render html in python
+- I also know that some pages are obscure but that is part of the fun
